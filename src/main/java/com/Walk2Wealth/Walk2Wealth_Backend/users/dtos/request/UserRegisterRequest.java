@@ -14,6 +14,15 @@ public class UserRegisterRequest {
     private String gender;
     private Date dateOfBirth;
     private String userName;
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getLastName() {
         return lastName;

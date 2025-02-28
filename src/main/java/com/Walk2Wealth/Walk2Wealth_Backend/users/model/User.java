@@ -8,36 +8,26 @@ import jakarta.persistence.Table;
 import java.util.Date;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
-    @Column(nullable = false, name = "firstName")
+    @Column(name = "firstname")
     private String firstName;
-    @Column(nullable = false, name = "lastName")
+    @Column(name = "lastname")
     private String lastName;
-    @Column(nullable = false, name = "email")
+    @Column(name = "email")
     private String email;
-    @Column(nullable = false, name = "password")
+    @Column(name = "password")
     private String password;
-    public enum Gender{
-        MALE, FEMALE
-    }
-    @Column(nullable = false, name = "gender")
+
+    @Column(name = "gender")
     private Gender gender;
-    @Column(nullable = false, name = "dateOfBirth")
+    @Column(name = "dob")
     private Date dateOfBirth;
     @Id
-    @Column(nullable = false, name = "userName")
+    @Column(name = "username")
     private String userName;
-
-
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    @Column(name = "phone")
+    private String phoneNumber;
 
     public String getFirstName() {
         return firstName;
@@ -45,6 +35,14 @@ public class User {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -63,6 +61,14 @@ public class User {
         this.password = password;
     }
 
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
@@ -79,11 +85,11 @@ public class User {
         this.userName = userName;
     }
 
-    public Gender getGender() {
-        return gender;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }
