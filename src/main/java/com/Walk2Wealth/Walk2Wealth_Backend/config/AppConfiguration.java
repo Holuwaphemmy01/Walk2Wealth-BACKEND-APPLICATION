@@ -44,5 +44,9 @@ public class AppConfiguration {
 //        return authProvider;
 //    }
 
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }
