@@ -27,7 +27,7 @@ public class UserRegisterServiceImpl implements UserRegisterService {
         if(!Email.validateEmail(user.getEmail())) throw new IllegalArgumentException("Invalid email");
         if(user.getPassword().isEmpty()) throw new IllegalArgumentException("Password cannot be empty");
         if(!Password.isValidPassword(user.getPassword())) throw new IllegalArgumentException("Invalid password");
-        if(!Gender.isValidGender(user.getGender())) throw new IllegalArgumentException("Invalid gender");
+//        if(!Gender.isValidGender(user.getGender())) throw new IllegalArgumentException("Invalid gender");
         if(!Username.isValidUsername(user.getUserName())) throw new IllegalArgumentException("Invalid username");
         if(!PhoneNumber.isValidPhoneNumber(user.getPhoneNumber())) throw new IllegalArgumentException("Invalid phone number");
 

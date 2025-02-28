@@ -25,7 +25,10 @@ public class AppConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(customizer ->customizer.disable())
-                .authorizeHttpRequests(requests -> requests.anyRequest().authenticated())
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("register", "login")
+                        .permitAll()
+                        .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())
                 .logout(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
@@ -36,13 +39,15 @@ public class AppConfiguration {
     }
 
 
-//    @Bean
-//    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService) {
-//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//        authProvider.setPasswordEncoder(new BCryptPasswordEncoder(14));
-//        authProvider.setUserDetailsService(userDetailsService);
-//        return authProvider;
-//    }
+    @Bean
+    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService) {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setPasswordEncoder(new BCryptPasswordEncoder(14));
+        authProvider.setUserDetailsService(userDetailsService);
+        return authProvider;
+    }
+
+
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
