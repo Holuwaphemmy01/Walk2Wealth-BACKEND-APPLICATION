@@ -36,13 +36,13 @@ public class AppConfiguration {
     }
 
 
-    @Bean
-    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService) {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setPasswordEncoder(new BCryptPasswordEncoder(14));
-        authProvider.setUserDetailsService(userDetailsService);
-        return authProvider;
-    }
+//    @Bean
+//    public AuthenticationProvider authenticationProvider(UserDetailsService userDetailsService) {
+//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+//        authProvider.setPasswordEncoder(new BCryptPasswordEncoder(14));
+//        authProvider.setUserDetailsService(userDetailsService);
+//        return authProvider;
+//    }
 
 
 }

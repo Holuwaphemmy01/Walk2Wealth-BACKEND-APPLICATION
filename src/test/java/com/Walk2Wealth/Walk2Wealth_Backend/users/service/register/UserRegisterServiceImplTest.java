@@ -46,13 +46,66 @@ class UserRegisterServiceImplTest {
         assertThrows(IllegalArgumentException.class, () -> {userRegisterService.registerUser(userRegisterRequest);});
     }
 
+
     @Test
-    public void testToThrowExceptionWhenIsEmpty() {
+    public void testToThrowExceptionWhenPasswordIsEmpty() {
         UserRegisterRequest userRegisterRequest = new UserRegisterRequest();
         userRegisterRequest.setFirstName("firstName");
         userRegisterRequest.setLastName("lastName");
-        userRegisterRequest.setEmail("");
+        userRegisterRequest.setEmail("email@gmail.com");
+        userRegisterRequest.setPassword("");
+        assertThrows(IllegalArgumentException.class, () -> {userRegisterService.registerUser(userRegisterRequest);});
+
+    }
+
+    @Test
+    public void testToThrowExceptionWhenPasswordDoesNotIncludeUpperCase() {
+        UserRegisterRequest userRegisterRequest = new UserRegisterRequest();
+        userRegisterRequest.setFirstName("firstName");
+        userRegisterRequest.setLastName("lastName");
+        userRegisterRequest.setEmail("adele");
         assertThrows(IllegalArgumentException.class, () -> {userRegisterService.registerUser(userRegisterRequest);});
     }
+
+    @Test
+    public void testToThrowExceptionWhenPasswordDoesIncludeLowerCase(){
+        UserRegisterRequest userRegisterRequest = new UserRegisterRequest();
+        userRegisterRequest.setFirstName("firstName");
+        userRegisterRequest.setLastName("lastName");
+        userRegisterRequest.setEmail("ADELE");
+        assertThrows(IllegalArgumentException.class, () -> {userRegisterService.registerUser(userRegisterRequest);});
+    }
+
+
+    @Test
+    public void testToThrowExceptionWhenPasswordDoesNotIncludeNumbers() {
+        UserRegisterRequest userRegisterRequest = new UserRegisterRequest();
+        userRegisterRequest.setFirstName("firstName");
+        userRegisterRequest.setLastName("lastName");
+        userRegisterRequest.setEmail("Adele");
+        assertThrows(IllegalArgumentException.class, () -> {userRegisterService.registerUser(userRegisterRequest);});
+    }
+
+    @Test
+    public void testToThrowExceptionWhenPasswordDoesNotIncludeSymbols() {
+        UserRegisterRequest userRegisterRequest = new UserRegisterRequest();
+        userRegisterRequest.setFirstName("firstName");
+        userRegisterRequest.setLastName("lastName");
+        userRegisterRequest.setEmail("Adele123");
+        assertThrows(IllegalArgumentException.class, () -> {userRegisterService.registerUser(userRegisterRequest);});
+    }
+    @Test
+    public void testToThrowExceptionWhenGenderIsNotMaleNorFemale() {
+        UserRegisterRequest userRegisterRequest = new UserRegisterRequest();
+        userRegisterRequest.setFirstName("firstName");
+        userRegisterRequest.setLastName("lastName");
+        userRegisterRequest.setEmail("Adele123..,");
+        userRegisterRequest.setGender("Gay");
+        assertThrows(IllegalArgumentException.class, () -> {userRegisterService.registerUser(userRegisterRequest);});
+    }
+
+
+
+
 
 }

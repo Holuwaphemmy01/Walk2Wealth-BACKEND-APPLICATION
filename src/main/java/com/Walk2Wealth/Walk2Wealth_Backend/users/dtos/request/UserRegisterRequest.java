@@ -11,7 +11,7 @@ public class UserRegisterRequest {
     private String lastName;
     private String email;
     private String password;
-    private User.Gender gender;
+    private String gender;
     private Date dateOfBirth;
     private String userName;
 
@@ -39,11 +39,11 @@ public class UserRegisterRequest {
         this.email = email;
     }
 
-    public User.Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(User.Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
