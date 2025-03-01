@@ -1,8 +1,10 @@
 package com.Walk2Wealth.Walk2Wealth_Backend.config;
 
+import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -17,10 +19,11 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class AppConfiguration {
+public class SecurityConfiguration {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
 
 
     @Bean
