@@ -7,5 +7,5 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 
 public interface CreateWalletService {
-    String createWallet(CreateWalletRequest createWalletRequest) throws InvalidAlgorithmParameterException, NoSuchAlgorithmException, NoSuchProviderException;
+    String createWallet(CreateWalletRequest createWalletRequest) throws Exception;
 }

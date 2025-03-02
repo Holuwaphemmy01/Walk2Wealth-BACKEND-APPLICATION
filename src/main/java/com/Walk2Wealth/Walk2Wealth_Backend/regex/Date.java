@@ -1,4 +1,4 @@
-package com.Walk2Wealth.Walk2Wealth_Backend.users.service.regex;
+package com.Walk2Wealth.Walk2Wealth_Backend.regex;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

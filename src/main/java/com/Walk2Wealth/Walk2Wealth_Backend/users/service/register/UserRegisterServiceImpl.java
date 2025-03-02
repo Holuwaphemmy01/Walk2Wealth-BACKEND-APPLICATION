@@ -1,10 +1,13 @@
 package com.Walk2Wealth.Walk2Wealth_Backend.users.service.register;
 
+import com.Walk2Wealth.Walk2Wealth_Backend.regex.Email;
+import com.Walk2Wealth.Walk2Wealth_Backend.regex.Password;
+import com.Walk2Wealth.Walk2Wealth_Backend.regex.PhoneNumber;
+import com.Walk2Wealth.Walk2Wealth_Backend.regex.Username;
 import com.Walk2Wealth.Walk2Wealth_Backend.users.dtos.request.UserRegisterRequest;
 import com.Walk2Wealth.Walk2Wealth_Backend.users.model.User;
 import com.Walk2Wealth.Walk2Wealth_Backend.users.repository.UserRepository;
 import com.Walk2Wealth.Walk2Wealth_Backend.users.service.Mapper.RegisterMapper;
-import com.Walk2Wealth.Walk2Wealth_Backend.users.service.regex.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

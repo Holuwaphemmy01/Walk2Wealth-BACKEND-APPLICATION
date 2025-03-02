@@ -22,11 +22,19 @@ public class Wallet {
     private Date createdAt;
     @Column(nullable = false, name = "updatedAt")
     private Date updatedAt;
-
+    private String privateKey;
     private String password;
     @OneToOne
     @JoinColumn(name = "userName")
     private User user;
+
+    public String getPrivateKey() {
+        return privateKey;
+    }
+
+    public void setPrivateKey(String privateKey) {
+        this.privateKey = privateKey;
+    }
 
     public String getPassword() {
         return password;
