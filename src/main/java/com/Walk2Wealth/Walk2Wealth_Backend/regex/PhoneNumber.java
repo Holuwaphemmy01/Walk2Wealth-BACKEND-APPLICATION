@@ -1,4 +1,4 @@
-package com.Walk2Wealth.Walk2Wealth_Backend.users.service.regex;
+package com.Walk2Wealth.Walk2Wealth_Backend.regex;
 
 import org.springframework.stereotype.Service;
 
