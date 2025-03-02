@@ -1,6 +1,5 @@
 package com.Walk2Wealth.Walk2Wealth_Backend.config;
 
-import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -32,9 +32,10 @@ public class SecurityConfiguration {
                 .csrf(customizer ->customizer.disable())
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("register", "login")
+//                        .requestMatchers(new AntPathRequestMatcher("/register", "POST")).permitAll()
+//                        .requestMatchers(new AntPathRequestMatcher("/login", "POST")).permitAll()
                         .permitAll()
                         .anyRequest().authenticated())
-                .formLogin(Customizer.withDefaults())
                 .logout(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session ->

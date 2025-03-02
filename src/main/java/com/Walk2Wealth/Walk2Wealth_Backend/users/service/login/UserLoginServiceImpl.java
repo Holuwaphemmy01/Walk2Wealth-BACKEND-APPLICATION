@@ -21,7 +21,7 @@ public class UserLoginServiceImpl {
     public String login(UserLoginRequest userLoginRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userLoginRequest.getUsername(), userLoginRequest.getPassword()));
 
-        if(!authentication.isAuthenticated()) throw new IllegalArgumentException("Invalid username or password");
-        else return jwtService.generateToken(userLoginRequest.getUsername());
+        if(authentication.isAuthenticated()) return jwtService.generateToken(userLoginRequest.getUsername());
+        else throw new IllegalArgumentException("Invalid username or password");
     }
 }
