@@ -37,7 +37,7 @@ public class SecurityConfiguration {
         return http
                 .csrf(customizer ->customizer.disable())
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("register", "login")
+                        .requestMatchers("/register", "/login")
 //                        .requestMatchers(new AntPathRequestMatcher("/register", "POST")).permitAll()
 //                        .requestMatchers(new AntPathRequestMatcher("/login", "POST")).permitAll()
                         .permitAll()

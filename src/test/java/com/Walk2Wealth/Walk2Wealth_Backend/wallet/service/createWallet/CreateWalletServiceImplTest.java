@@ -49,4 +49,16 @@ public class CreateWalletServiceImplTest {
         IllegalArgumentException response = (assertThrows(IllegalArgumentException.class, () -> createWalletService.createWallet(createWalletRequest)));
         assertEquals("Wallet Password should be at least 8 character.", response.getMessage());
     }
+
+    @Test
+    public void toTestToGetWalletSuccessful() throws Exception {
+        CreateWalletRequest createWalletRequest = new CreateWalletRequest();
+        createWalletRequest.setUsername("Holuwaphemmy01");
+        createWalletRequest.setPassword("OLuwayemi2002..,");
+        String response = createWalletService.createWallet(createWalletRequest);
+        System.out.println(response);
+        assertNotNull(response);
+    }
+
+
 }

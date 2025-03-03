@@ -1,5 +1,4 @@
 package com.Walk2Wealth.Walk2Wealth_Backend.wallet.service.createWallet;
-
 import com.Walk2Wealth.Walk2Wealth_Backend.regex.Password;
 import com.Walk2Wealth.Walk2Wealth_Backend.users.dtos.response.UserRequestResponse;
 import com.Walk2Wealth.Walk2Wealth_Backend.users.service.outsideUser.FindByUserNameServiceImpl;
@@ -39,8 +38,8 @@ public class CreateWalletServiceImpl implements CreateWalletService {
             throw new IllegalArgumentException("Password cannot be empty");
         if(createWalletRequest.getPassword().strip().length() < 8 )
             throw new IllegalArgumentException("Wallet Password should be at least 8 character.");
-        if(!Password.isValidPassword(createWalletRequest.getPassword()))
-            throw new IllegalArgumentException("Password is invalid");
+//        if(!Password.isValidPassword(createWalletRequest.getPassword()))
+//            throw new IllegalArgumentException("Password is invalid");
 
 
 
@@ -52,9 +51,9 @@ public class CreateWalletServiceImpl implements CreateWalletService {
         UserRequestResponse userRequestResponse = findByUserNameService.findByUserName(createWalletRequest.getUsername());
         user.setUserName(userRequestResponse.getUserName());
         wallet.setUser(user);
-        wallet.setPassword(hashPassword.hash(createWalletRequest.getPassword()));
+        wallet.setPin(hashPassword.hash(createWalletRequest.getPassword()));
         String encrypted = EncryptionAndDecryption.encryptPrivateKey(credentials.getEcKeyPair().getPrivateKey().toString(),
-                wallet.getPassword());
+                wallet.getPin());
         wallet.setPrivateKey(encrypted);
         wallet.setAddress(credentials.getAddress());
         wallet.setCreatedAt(Date.from(Instant.now()));

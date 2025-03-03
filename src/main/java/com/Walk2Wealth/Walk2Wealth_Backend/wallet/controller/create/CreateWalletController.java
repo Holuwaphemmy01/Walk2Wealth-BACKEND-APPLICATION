@@ -17,16 +17,28 @@ public class CreateWalletController {
     private CreateWalletService createWalletService;
 
 
-    @PostMapping
-    public ResponseEntity<?> createWallet(@RequestBody String Password, Authentication authentication) {
-        try{
-                CreateWalletRequest createWalletRequest = new CreateWalletRequest();
-                createWalletRequest.setPassword(Password);
-                createWalletRequest.setUsername(authentication.getName());
-                return ResponseEntity.ok(createWalletService.createWallet(createWalletRequest));
-        }
-        catch(Exception e){
-           return ResponseEntity.status(400).body(e.getMessage());
-        }
+//    @PostMapping
+//    public ResponseEntity<?> createWallet(@RequestBody String Password, Authentication authentication) {
+//        try{
+//                CreateWalletRequest createWalletRequest = new CreateWalletRequest();
+//                createWalletRequest.setPassword(Password);
+//                createWalletRequest.setUsername(authentication.getName());
+//                return ResponseEntity.ok(createWalletService.createWallet(createWalletRequest));
+//        }
+//        catch(Exception e){
+//           return ResponseEntity.status(400).body(e.getMessage());
+//        }
+//    }
+@PostMapping
+public ResponseEntity<?> createWallet(@RequestBody String Password, Authentication authentication) { // Add Authentication
+    try {
+        CreateWalletRequest createWalletRequest = new CreateWalletRequest();
+        createWalletRequest.setPassword(Password);
+        String username = authentication.getName(); // Extract username
+        createWalletRequest.setUsername(username); // Set username in the request
+        return ResponseEntity.ok(createWalletService.createWallet(createWalletRequest));
+    } catch (Exception e) {
+        return ResponseEntity.status(400).body(e.getMessage());
     }
+}
 }

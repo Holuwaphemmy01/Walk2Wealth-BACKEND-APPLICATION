@@ -12,20 +12,22 @@ import java.util.UUID;
 @Table(name = "wallet")
 public class Wallet {
     @Id
-    @Column(nullable = false, unique = true, name = "walletId")
+    @Column(nullable = false, unique = true, name = "id")
     private UUID id;
     @Column(nullable = false, unique = true, updatable = false, name = "address")
     private String address;
     @Column(nullable = false, unique = true, name = "balance")
     private BigDecimal balance;
-    @Column(nullable = false, name = "createdAt")
+    @Column(nullable = false, name = "created_at")
     private Date createdAt;
-    @Column(nullable = false, name = "updatedAt")
+    @Column(nullable = false, name = "updated_at")
     private Date updatedAt;
+    @Column(nullable = false, name = "private_key")
     private String privateKey;
-    private String password;
+    @Column(nullable = false, name = "pin")
+    private String pin;
     @OneToOne
-    @JoinColumn(name = "userName")
+    @JoinColumn(name = "username", referencedColumnName = "username")
     private User user;
 
     public String getPrivateKey() {
@@ -36,12 +38,12 @@ public class Wallet {
         this.privateKey = privateKey;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPin() {
+        return pin;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPin(String password) {
+        this.pin = password;
     }
 
     public UUID getId() {
@@ -65,7 +67,7 @@ public class Wallet {
     }
 
     public void setBalance(BigDecimal balance) {
-        this.balance = balance;
+        this.balance =balance;
     }
 
     public Date getCreatedAt() {
